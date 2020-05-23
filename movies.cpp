@@ -31,7 +31,7 @@ void MovieBST::insert(const string movieTitle, const double movieRating)
   if (!root)
     {
       root = new Movie(movieTitle, movieRating, 0);
-      cout<< count<<endl;
+      //cout<< count<<endl;
       return;
     }
   

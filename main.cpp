@@ -49,7 +49,7 @@ int main(int argc, char** argv){
   movieFile.close();
 
   //program start
-  if (argv[1] == "true")
+  if (strcmp(argv[1], "true") == 0)
     {
       movies.printPreOrder();
       cout<<endl;
