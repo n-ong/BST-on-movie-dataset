@@ -51,6 +51,7 @@ int main(int argc, char** argv){
   //program start
   if (strcmp(argv[1], "true") == 0)
     {
+      cout<<endl;
       movies.printPreOrder();
       cout<<endl;
       movies.highestRating(argv[3]);
