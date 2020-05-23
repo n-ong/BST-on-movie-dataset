@@ -49,11 +49,10 @@ int main(int argc, char** argv){
   movieFile.close();
 
   //program start
-  if (strcmp(argv[1], "true") == 0)
+  if (flag == true)
     {
-      cout<<endl;
       movies.printPreOrder();
-      cout<<endl;
+      cout<<endl<<endl;
       movies.highestRating(argv[3]);
     }
   else
