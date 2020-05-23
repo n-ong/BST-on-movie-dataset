@@ -5,6 +5,8 @@
 #include <vector>
 #include <cstring>
 #include <algorithm>
+#include <iomanip>
+#include "movies.h"
 
 using namespace std;
 
@@ -37,16 +39,41 @@ int main(int argc, char** argv){
 
   // Create an objects of the BST class you defined 
   // to contain the name and rating in the input file
-
+  MovieBST movies;
+  vector<string> movieNames;
   // Read each file and store the name and rating
   while (getline (movieFile, line) && parseLine(line, movieName, movieRating)){
-    // Use std::string movieName and double movieRating
-    // to construct your Movie objects
-    cout << movieName << " has rating " << movieRating << endl;
+    movies.insert(movieName, movieRating);
+    movieNames.push_back(movieName);//vector of movie names that will be used for timing the search function
   }
   movieFile.close();
 
-  return 0;
+  //program start
+  if (argv[1] == "true")
+    {
+      movies.printPreOrder();
+      cout<<endl;
+      movies.highestRating(argv[3]);
+    }
+  else
+    {
+      clock_t t;
+      int w = strtol(argv[3], NULL, 10); //converts argv[3] to an int
+      
+      for (int i = 0; i < w; i++) 
+	{
+	  t = clock();
+	  for (string item : movieNames)
+	    {
+	      movies.search(item);
+	    }
+	  t = clock() - t;
+	  cout<<fixed<<showpoint;
+	  cout<<setprecision(2);
+	  cout<<"Time: "<< (double)t*1000000/CLOCKS_PER_SEC<<" micros"<<endl; 
+	}
+    }
+      return 0;
 }
 
 bool parseLine(string &line, string &movieName, double &movieRating) {
