@@ -205,7 +205,6 @@ void MovieBST::highestRating(string prefix) const
   vector<MovieBST::Movie*>* movieList = searchPrefixHelper(prefix);
   if (!movieList)
     {
-      cout<<endl;
       exit(1);
     }
   Movie* highestRatedMovie = (*movieList)[0];
