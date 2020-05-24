@@ -1,3 +1,5 @@
+all: runMovies tests
+
 movies.o: movies.cpp movies.h
 	g++ movies.cpp -c
 
