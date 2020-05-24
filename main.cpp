@@ -52,7 +52,7 @@ int main(int argc, char** argv){
   if (flag == true)
     {
       movies.printPreOrder();
-      cout<<endl<<endl;
+      cout<<endl;
       movies.highestRating(argv[3]);
     }
   else

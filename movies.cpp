@@ -24,6 +24,36 @@ void MovieBST::clear(Movie* movie) //recursively deletes nodes
     }
 }
 
+bool MovieBST::getRoot() const
+{
+  return getRootPrivate();
+}
+
+MovieBST::Movie* MovieBST::getRootPrivate() const
+{
+  return root;
+}
+
+bool MovieBST::getLeft() const
+{
+  return getLeftPrivate();
+}
+
+MovieBST::Movie* MovieBST::getLeftPrivate() const
+{
+  return root->left;
+}
+
+bool MovieBST::getRight() const
+{
+  return getRightPrivate();
+}
+
+MovieBST::Movie* MovieBST::getRightPrivate() const
+{
+  return root->right;
+}
+
 void MovieBST::insert(const string movieTitle, const double movieRating)
 {
   //int count = 0;
@@ -128,7 +158,6 @@ vector<MovieBST::Movie*>* MovieBST::searchPrefixHelper(string prefix) const
 {
   vector<Movie*>* list = new vector<Movie*>();
   Movie* iter = searchHelper(prefix);//the first occurance of the prefix
-
   //iterative preorder traversal (I had to look this up online but I changed stuff around so my code would work)
   if (!iter)
     {
@@ -174,6 +203,11 @@ vector<MovieBST::Movie*>* MovieBST::searchPrefixHelper(string prefix) const
 void MovieBST::highestRating(string prefix) const
 {
   vector<MovieBST::Movie*>* movieList = searchPrefixHelper(prefix);
+  if (!movieList)
+    {
+      cout<<endl;
+      exit(1);
+    }
   Movie* highestRatedMovie = (*movieList)[0];
   for (int i = 1; i < movieList->size(); i++)
     {
@@ -182,7 +216,7 @@ void MovieBST::highestRating(string prefix) const
 	  highestRatedMovie = (*movieList)[i];
 	}
     }
-
+  
   cout<<"Best movie is " << highestRatedMovie->title<<" with rating "<< highestRatedMovie->rating<< endl;
   delete movieList;
 }

@@ -16,6 +16,10 @@ class MovieBST{
   void searchPrefix(string prefix) const;
   void highestRating(string prefix) const;
 
+  bool getRoot() const;
+  bool getLeft() const;
+  bool getRight() const;
+  
  private:
   struct Movie
   {
@@ -30,6 +34,10 @@ class MovieBST{
   void printPreOrderHelper(Movie* n) const;
   void clear(Movie* movie);
 
+  Movie* getRootPrivate() const;
+  Movie* getLeftPrivate() const;
+  Movie* getRightPrivate() const;
+  
   Movie* root;
 };
 
