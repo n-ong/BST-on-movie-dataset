@@ -13,3 +13,6 @@ tests.o: tests.cpp tests.h
 tests: tests.o movies.o
 	g++ tests.o movies.o -o tests
 	./tests
+
+clean:
+	rm tests runMovies
